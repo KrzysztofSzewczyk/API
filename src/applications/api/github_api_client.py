@@ -82,7 +82,8 @@ class GitHubAPIClient:
             }
         )
         print("Repo search Status Code:", r.status_code)
-        r.raise_for_status()
-        body = r.json()
-        
-        return body['items']
+        if r.status_code == 200:
+            body = r.json()
+            return body['items'], r.status_code
+        else:       
+            return [], r.status_code
