@@ -19,7 +19,7 @@ def test_login_negative():
     element.click()
     element = driver.find_element(By.CLASS_NAME, "js-flash-alert")
     result = element.text
-    driver.close()
+    driver.quit()
     assert result == "Incorrect username or password."
 
 
@@ -34,5 +34,5 @@ def test_signup():
     time.sleep(3) # wait for typing of the text on web page
     element = driver.find_element(By.CSS_SELECTOR, "h1")
     result = element.text
-    driver.close()
+    driver.quit()
     assert result == "Welcome to GitHub! Let's begin the adventure"
